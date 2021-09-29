@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registraton Form</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container"><br>
+		
+		<div class="col-lg-6 m-auto d-block">
+			
+			<form action="#" onsubmit="return validation()" class="bg-light">
+				
+				<div class="form-group">
+					<label for="user" class="font-weight-bold"> Имя: </label>
+					<input type="text" name="user" class="form-control" id="username" autocomplete="off">
+					<span id="firstname" class="text-danger font-weight-bold"> </span>
+				</div>
+
+				<div class="form-group">
+					<label for="user" class="font-weight-bold"> Фамилия: </label>
+					<input type="text" name="name" class="form-control" id="surname" autocomplete="off">
+					<span id="lastname" class="text-danger font-weight-bold"> </span>
+				</div>
+
+				<div class="form-group">
+					<label class="font-weight-bold"> Номер телефона: </label>
+					<input type="text" name="phoneNumber" class="form-control" id="phoneNumber" autocomplete="off">
+					<span id="mobilenum" class="text-danger font-weight-bold"> </span>
+				</div>
+
+				<div class="form-group">
+					<label class="font-weight-bold"> Эл. почта: </label>
+					<input type="text" name="emailadd" class="form-control" id="ademail" autocomplete="off">
+					<span id="emailid" class="text-danger font-weight-bold"> </span>
+				</div>
+
+				<div class="form-group">
+					<label class="font-weight-bold"> Пароль: </label>
+					<input type="text" name="pass" class="form-control" id="passid" autocomplete="off">
+					<span id="password" class="text-danger font-weight-bold"> </span>
+				</div>
+
+				<div class="form-group">
+					<label class="font-weight-bold"> Добавьте фото: </label>
+				    <input type="file" accept=".jpg,.png" id="imagefile" autocomplete="off">
+					<span id="photoimg" class="text-danger font-weight-bold"> </span>
+				</div>
+
+				<input type="submit" name="submit" value="Отправить" class="btn btn-success" autocomplete="off">
+
+			</form><br><br>
+
+		</div>
+	</div>
+
+
+
+	<script>
+		
+
+		function validation() {
+
+			var username = document.getElementById('username').value;
+			var surname = document.getElementById('surname').value;
+			var phoneNumber = document.getElementById('phoneNumber').value;
+			var email = document.getElementById('ademail').value;
+			var pass = document.getElementById('passid').value;
+			var img = document.getElementById('imagefile').value;
+
+
+			if (username == ""){
+				document.getElementById('firstname').innerHTML ="Введите Имя";
+				return false;
+			}
+			if ((username.length <= 2) || (username.length > 20)) {
+				document.getElementById('firstname').innerHTML ="Имя должно содержать не менее 2-ух букв";
+				return false;	
+			}
+			if (!isNaN(username)){
+				document.getElementById('firstname').innerHTML ="Имя должно содержать буквы";
+				return false;
+			}
+
+			if (surname == ""){
+				document.getElementById('lastname').innerHTML ="Введите Фамилию";
+				return false;
+			}
+			if ((surname.length <= 2) || (surname.length > 20)) {
+				document.getElementById('lastname').innerHTML ="Фамилия должна содержать не менее 2-ух букв";
+				return false;	
+			}
+			if (!isNaN(surname)){
+				document.getElementById('lastname').innerHTML ="Фамилия должна содержать буквы";
+				return false;
+			}
+
+			if (phoneNumber == ""){
+				document.getElementById('mobilenum').innerHTML ="Введите номер Телефона";
+				return false;
+			}
+			if (isNaN(phoneNumber)){
+				document.getElementById('mobilenum').innerHTML ="Номер телефона должен быть из цифр";
+				return false;
+			}
+			if (phoneNumber.length!=10){
+				document.getElementById('mobilenum').innerHTML ="Номер телефона должен содержать не менее 10-ти цифр";
+				return false;
+			}
+
+			if (email == ""){
+				document.getElementById('emailid').innerHTML ="Введите адрес эл. почты";
+				return false;
+			}
+			if (email.indexOf('@') <= 0 ){
+				document.getElementById('emailid').innerHTML ="Адрес должен содержать символ @";
+				return false;
+			}
+
+			if ((email.charAt(email.length-4)!='.') && (email.charAt(email.length-3)!='.')){
+				document.getElementById('emailid').innerHTML ="Поле Email должно принимать только валидные email адресса";
+				return false;
+			}
+
+			if (pass == ""){
+				document.getElementById('password').innerHTML ="Введите пароль";
+				return false;
+			}
+			if ((pass.length <= 8) || (pass.length > 16)) {
+				document.getElementById('password').innerHTML ="Пароль должен быть минимум 8 символов и содержать буквы нижнего/верхнего регистра, цифры и хотя бы 1 спец символ";
+				return false;	
+			}
+
+			if (img.files.length == 0) {
+				document.getElementById('photoimg').innerHTML ="Загрузите фото вашего профиля";
+				return false;
+			}
+
+
+
+		}
+
+	</script>
+
+</body>
+</html>

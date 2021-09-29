@@ -1,0 +1,22 @@
+База данных MongoDB содержит коллекции:
+posts - Записи - 
+{
+  "properties": {
+    "_id": { "bsonType": "objectId" },
+    "title": { "bsonType": "string" },
+    "content": { "bsonType": "string" },
+    "author": { "bsonType": "string" },
+    "like": { "bsonType": "int" },
+    "dislike": { "bsonType": "int" }
+  }
+}
+
+Задание
+Напишите команды для получения следующих значений:
+1. Выведите 10 записей из коллекции posts пропустив первые 5 и сделайте сортировку в алфавитном порядке по полю author
+2. Выведите все записи у которых dislike меньше 100
+3. Увеличить like на +1 во всех posts у который author  === 'a1' 
+4. Выведите список title и их общее количество dislike
+
+1. db.posts.find().limit(15).skip(5).sort( { "author" : 1 } );
+2. 
